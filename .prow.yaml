@@ -1,0 +1,27 @@
+presubmits:
+- name: googlecloudplatform-container-engine-accelerators-build
+  always_run: true
+  decorate: true
+  labels:
+    prow.k8s.io/gerrit-report-label: "Verified"
+    preset-cookie-file: "true"
+    preset-cookie-file-env: "true"
+  spec:
+    containers:
+    - image: google-go.pkg.dev/golang:1.24.2
+      command:
+      - make
+      - build
+- name: googlecloudplatform-container-engine-accelerators-test
+  always_run: true
+  decorate: true
+  labels:
+    prow.k8s.io/gerrit-report-label: "Verified"
+    preset-cookie-file: "true"
+    preset-cookie-file-env: "true"
+  spec:
+    containers:
+    - image: google-go.pkg.dev/golang:1.24.2
+      command:
+      - make
+      - test
